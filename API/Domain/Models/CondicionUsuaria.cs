@@ -25,6 +25,7 @@ namespace API.Domain.Models
         // Relación 1:1 con Paciente
         [Required]
         public int PacienteId { get; set; } // Identificador del paciente asociado
+
         [ForeignKey("PacienteId")]
         public Paciente Paciente { get; set; } // Relación con la entidad Paciente
     }

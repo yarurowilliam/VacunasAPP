@@ -31,16 +31,16 @@ public class EsquemaVacunacionService : IEsquemaVacunacionService
         foreach (var detalle in esquemaVacunacion.Detalles)
         {
             if (detalle.VacunaId.HasValue)
-                await _vacunaRepository.DescontarInventarioAsync(detalle.VacunaId.Value, detalle.CantidadUtilizada);
+                await _vacunaRepository.DescontarInventarioAsync(detalle.VacunaId.Value, detalle.CantidadUtilizadaVacuna ?? 0);
 
             if (detalle.SueroId.HasValue)
-                await _sueroRepository.DescontarInventarioAsync(detalle.SueroId.Value, detalle.CantidadUtilizada);
+                await _sueroRepository.DescontarInventarioAsync(detalle.SueroId.Value, detalle.CantidadUtilizadaSuero ?? 0);
 
             if (detalle.DiluyenteId.HasValue)
-                await _diluyenteRepository.DescontarInventarioAsync(detalle.DiluyenteId.Value, detalle.CantidadUtilizada);
+                await _diluyenteRepository.DescontarInventarioAsync(detalle.DiluyenteId.Value, detalle.CantidadUtilizadaDiluyente ?? 0);
 
             if (detalle.JeringaId.HasValue)
-                await _jeringaRepository.DescontarInventarioAsync(detalle.JeringaId.Value, detalle.CantidadUtilizada);
+                await _jeringaRepository.DescontarInventarioAsync(detalle.JeringaId.Value, detalle.CantidadUtilizadaJeringa ?? 0);
         }
 
         await _esquemaRepository.AddAsync(esquemaVacunacion);

@@ -17,19 +17,20 @@ public class EsquemaVacunacionDetalle
     public int? VacunaId { get; set; } // Identificador de la vacuna utilizada (opcional)
     [ForeignKey("VacunaId")]
     public Vacuna? Vacuna { get; set; } // Relación con Vacuna
+    public int? CantidadUtilizadaVacuna { get; set; } // Cantidad utilizada del elemento
 
     public int? SueroId { get; set; } // Identificador del suero utilizado (opcional)
     [ForeignKey("SueroId")]
     public Suero? Suero { get; set; } // Relación con Suero
+    public int? CantidadUtilizadaSuero { get; set; } // Cantidad utilizada del elemento
 
     public int? DiluyenteId { get; set; } // Identificador del diluyente utilizado (opcional)
     [ForeignKey("DiluyenteId")]
     public Diluyente? Diluyente { get; set; } // Relación con Diluyente
+    public int? CantidadUtilizadaDiluyente { get; set; } // Cantidad utilizada del elemento
 
     public int? JeringaId { get; set; } // Identificador de la jeringa utilizada (opcional)
     [ForeignKey("JeringaId")]
     public Jeringa? Jeringa { get; set; } // Relación con Jeringa
-
-    [Required]
-    public int CantidadUtilizada { get; set; } // Cantidad utilizada del elemento
+    public int? CantidadUtilizadaJeringa { get; set; } // Cantidad utilizada del elemento
 }

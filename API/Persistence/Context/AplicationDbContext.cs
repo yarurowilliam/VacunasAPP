@@ -35,15 +35,15 @@ public class AplicationDbContext : DbContext
             .WithOne(a => a.Paciente)
             .HasForeignKey(a => a.PacienteId);
 
-        modelBuilder.Entity<Madre>()
-            .HasMany(m => m.Pacientes)
-            .WithOne(p => p.Madre)
-            .HasForeignKey(p => p.MadreId);
+        //modelBuilder.Entity<Madre>()
+        //    .HasMany(m => m.Pacientes)
+        //    .WithOne(p => p.Madre)
+        //    .HasForeignKey(p => p.MadreId);
 
-        modelBuilder.Entity<Cuidador>()
-            .HasMany(c => c.Pacientes)
-            .WithOne(p => p.Cuidador)
-            .HasForeignKey(p => p.CuidadorId);
+        //modelBuilder.Entity<Cuidador>()
+        //    .HasMany(c => c.Pacientes)
+        //    .WithOne(p => p.Cuidador)
+        //    .HasForeignKey(p => p.CuidadorId);
 
         modelBuilder.Entity<Paciente>()
              .HasOne(p => p.CondicionUsuaria)
@@ -55,15 +55,15 @@ public class AplicationDbContext : DbContext
             .WithOne(a => a.Paciente)
             .HasForeignKey<AntecedentesMedicos>(a => a.PacienteId); // Configura la clave externa
 
-        modelBuilder.Entity<Paciente>()
-          .HasOne(p => p.EsquemaVacunacion)
-          .WithOne(e => e.Paciente)
-          .HasForeignKey<EsquemaVacunacion>(e => e.PacienteId); // Clave externa de EsquemaVacunacion
+        //modelBuilder.Entity<Paciente>()
+        //  .HasOne(p => p.EsquemaVacunacion)
+        //  .WithOne(e => e.Paciente)
+        //  .HasForeignKey<EsquemaVacunacion>(e => e.PacienteId); // Clave externa de EsquemaVacunacion
 
-        modelBuilder.Entity<EsquemaVacunacion>()
-            .HasMany(e => e.Detalles)
-            .WithOne(d => d.EsquemaVacunacion)
-            .HasForeignKey(d => d.EsquemaVacunacionId); // Clave externa de EsquemaVacunacionDetalle
+        //modelBuilder.Entity<EsquemaVacunacion>()
+        //    .HasMany(e => e.Detalles)
+        //    .WithOne(d => d.EsquemaVacunacion)
+        //    .HasForeignKey(d => d.EsquemaVacunacionId); // Clave externa de EsquemaVacunacionDetalle
 
 
     }

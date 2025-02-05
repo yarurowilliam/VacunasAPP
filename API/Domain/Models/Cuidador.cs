@@ -45,7 +45,4 @@ public class Cuidador
 
     [StringLength(15)]
     public string Celular { get; set; } // Celular (opcional)
-
-    // Relación con Paciente
-    public ICollection<Paciente> Pacientes { get; set; } // Lista de pacientes asociados
 }

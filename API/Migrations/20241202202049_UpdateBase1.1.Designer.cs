@@ -4,6 +4,7 @@ using API.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241202202049_UpdateBase1.1")]
+    partial class UpdateBase11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,8 +87,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PacienteId")
-                        .IsUnique();
+                    b.HasIndex("PacienteId");
 
                     b.ToTable("AntecedentesMedicos");
                 });
@@ -123,8 +125,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PacienteId")
-                        .IsUnique();
+                    b.HasIndex("PacienteId");
 
                     b.ToTable("CondicionesUsuarias");
                 });
@@ -319,6 +320,8 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PacienteId");
+
                     b.ToTable("EsquemasVacunacion");
                 });
 
@@ -330,16 +333,7 @@ namespace API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CantidadUtilizadaDiluyente")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CantidadUtilizadaJeringa")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CantidadUtilizadaSuero")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CantidadUtilizadaVacuna")
+                    b.Property<int>("CantidadUtilizada")
                         .HasColumnType("int");
 
                     b.Property<int?>("DiluyenteId")
@@ -647,8 +641,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Domain.Models.AntecedentesMedicos", b =>
                 {
                     b.HasOne("API.Domain.Models.Paciente", "Paciente")
-                        .WithOne("AntecedentesMedicos")
-                        .HasForeignKey("API.Domain.Models.AntecedentesMedicos", "PacienteId")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -658,8 +652,19 @@ namespace API.Migrations
             modelBuilder.Entity("API.Domain.Models.CondicionUsuaria", b =>
                 {
                     b.HasOne("API.Domain.Models.Paciente", "Paciente")
-                        .WithOne("CondicionUsuaria")
-                        .HasForeignKey("API.Domain.Models.CondicionUsuaria", "PacienteId")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("API.Domain.Models.EsquemaVacunacion", b =>
+                {
+                    b.HasOne("API.Domain.Models.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -709,10 +714,6 @@ namespace API.Migrations
             modelBuilder.Entity("API.Domain.Models.Paciente", b =>
                 {
                     b.Navigation("Antecedentes");
-
-                    b.Navigation("AntecedentesMedicos");
-
-                    b.Navigation("CondicionUsuaria");
                 });
 #pragma warning restore 612, 618
         }

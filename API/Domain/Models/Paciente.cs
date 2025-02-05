@@ -132,17 +132,13 @@ public class Paciente
     // Relación con Antecedentes
     public ICollection<Antecedente> Antecedentes { get; set; }
 
-    // Relación con Madre
+    //// Relación con Madre
     [Required]
     public int MadreId { get; set; } // Identificador de la madre
-    [ForeignKey("MadreId")]
-    public Madre Madre { get; set; } // Referencia a la entidad Madre
 
-    // Relación con Cuidador
+    //// Relación con Cuidador
     [Required]
     public int CuidadorId { get; set; } // Identificador del cuidador
-    [ForeignKey("CuidadorId")]
-    public Cuidador Cuidador { get; set; } // Referencia a la entidad Cuidador
 
     // Relación 1:1 con CondicionUsuaria
     public CondicionUsuaria CondicionUsuaria { get; set; }
@@ -150,6 +146,6 @@ public class Paciente
     // Relación 1:1 con AntecedentesMedicos
     public AntecedentesMedicos AntecedentesMedicos { get; set; }
 
-    // Relación 1:1 con EsquemaVacunacion
-    public EsquemaVacunacion EsquemaVacunacion { get; set; }
+    //// Relación 1:1 con EsquemaVacunacion
+    //public EsquemaVacunacion EsquemaVacunacion { get; set; }
 }

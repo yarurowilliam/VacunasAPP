@@ -178,6 +178,8 @@ else
     builder.Services.AddScoped<IAntecedenteService, AntecedenteService>();
     builder.Services.AddScoped<ICondicionUsuariaService, CondicionUsuariaService>();
     builder.Services.AddScoped<IAntecedentesMedicosService, AntecedentesMedicosService>();
+    builder.Services.AddScoped<IEsquemaVacunacionService, EsquemaVacunacionService>();
+    builder.Services.AddScoped<IPacienteService, PacienteService>();
 
     // Repositorios
     builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -191,6 +193,8 @@ else
     builder.Services.AddScoped<IAntecedenteRepository, AntecedenteRepository>();
     builder.Services.AddScoped<ICondicionUsuariaRepository, CondicionUsuariaRepository>();
     builder.Services.AddScoped<IAntecedentesMedicosRepository, AntecedentesMedicosRepository>();
+    builder.Services.AddScoped<IEsquemaVacunacionRepository, EsquemaVacunacionRepository>();
+    builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
 
     builder.Services.AddScoped<IRepository<Vacuna>, VacunaRepository>();
     builder.Services.AddScoped<IRepository<Jeringa>, JeringaRepository>();
@@ -201,6 +205,8 @@ else
     builder.Services.AddScoped<IRepository<Antecedente>, AntecedenteRepository>();
     builder.Services.AddScoped<IRepository<CondicionUsuaria>, CondicionUsuariaRepository>();
     builder.Services.AddScoped<IRepository<AntecedentesMedicos>, AntecedentesMedicosRepository>();
+    builder.Services.AddScoped<IRepository<EsquemaVacunacion>, EsquemaVacunacionRepository>();
+    builder.Services.AddScoped<IRepository<Paciente>, PacienteRepository>();
 
     builder.Services.AddScoped<IBaseService<Vacuna>, VacunaService>();
     builder.Services.AddScoped<IBaseService<Jeringa>, JeringaService>();
@@ -211,6 +217,8 @@ else
     builder.Services.AddScoped<IBaseService<Antecedente>, AntecedenteService>();
     builder.Services.AddScoped<IBaseService<CondicionUsuaria>, CondicionUsuariaService>();
     builder.Services.AddScoped<IBaseService<AntecedentesMedicos>, AntecedentesMedicosService>();
+    builder.Services.AddScoped<IBaseService<Paciente>, PacienteService>();
+
 
 
     // Configuración de CORS

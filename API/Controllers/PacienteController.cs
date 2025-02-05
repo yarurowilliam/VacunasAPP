@@ -1,5 +1,6 @@
 ﻿using API.Domain.IServices;
 using API.Domain.Models;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -29,6 +30,14 @@ public class PacienteController : ControllerBase
         if (paciente == null)
             return NotFound(new { mensaje = "Paciente no encontrado." });
 
+        return Ok(paciente);
+    }
+
+    // Obtener antecedentes por ID de paciente
+    [HttpGet("BuscarPaciente/{numeroIdentificacion}")]
+    public async Task<IActionResult> GetByPacienteId(string numeroIdentificacion)
+    {
+        var paciente = await _pacienteService.GetByPacienteIdAsync(numeroIdentificacion);
         return Ok(paciente);
     }
 

@@ -52,8 +52,4 @@ public class Madre
 
     [Required]
     public bool Desplazado { get; set; } // Indica si es desplazado (obligatorio)
-
-     // Relación con Paciente
-    public ICollection<Paciente> Pacientes { get; set; } // Lista de pacientes asociados
-
 }
